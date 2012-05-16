@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Todo List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="script/underscore.js"></script>
+    <script src="script/backbone.js"></script>
+    <script src="script/backbone-storage.js"></script>
+    <script src="script/todolist.js"></script>
+    <!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+  <style type="text/css">
+body {
+	background: #dfdfdf no-repeat 20px 100px;
+	font-family: Helvetica,Arial,sans-serif;
+}
+
+section {
+	background: #fff;
+	border-radius: 4px;
+	position: absolute;
+	top: 20px;
+	bottom: 20px;
+	left: 50%;
+	box-shadow: 0 3px 6px rgba(0,0,0,.4),
+				0 -1px 2px rgba(0,0,0,.2);
+}
+
+	section h1 {
+		background: -webkit-gradient(linear, 0 0, 0 100%, from(#3161A8), to(#214170));
+		border-radius: 4px 4px 0 0;
+		color: #FFF;
+		margin: 0;
+		padding: 10px;
+        text-shadow: 1px 1px 1px rgba(0,0,0,1);
+        text-align: center;
+	}
+#list{
+width:400px;
+margin-left:-200px;
+}
+#new-todo{
+width:100%;
+height: 50px;
+position:relative;
+margin:0 auto;
+text-align: center;
+}
+#plus{
+position: absolute;
+left: 0px;
+}
+#todo-list{
+list-style-type: none;
+}
+#todo-input{
+margin-top: 10px;
+width: 80%;
+height: 30px;
+font-size: 30px;
+text-align: center;
+margin-left: 40px;
+}
+.display{
+font-size: 25px;
+}
+@media only screen and (max-width : 320px) {
+#list{
+left:10px;
+margin-left:0px;
+width:300px;}
+#todo-input{
+font-size: 15px;
+}
+#plus{
+top:3px;
+width:50px;
+}
+}
+</style>
+  </head>
+  <body>
+<div id="todo-app">
+    <section id="list">
+      <h1>Todo List</h1>
+      <div id="new-todo"><input id="todo-input" placeholder="insert
+      todo" type="text"><img src="img/plus.png" id="plus" alt="add todo" /></div>
+      <ul id="todo-list"></ul>
+    </section>
+</div>
+<!-- TEMPLATES-->
+<script type="text/template" id="item-template"> 
+<div class="todo <%= done ? 'done' : '' %>">
+    <div class="display">
+        <input class="check" type="checkbox" <%=done ? 'checked="checked"' :'' %>/>
+        <label class="todo-content">
+            <%=content%>
+        </label>
+        <span class="todo-destroy"></span>
+    </div>
+    <div class="edit" style="display:none">
+        <input class="todo-input" type="text" value="<%= content %>" />
+    </div>
+</div>
+</script>
+  </body>
+</html>
